@@ -1,10 +1,10 @@
-<%= form_with(model: oficina) do |form| %>
-  <% if oficina.errors.any? %>
+<%= form_with(model: office) do |form| %>
+  <% if office.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(oficina.errors.count, "error") %> prohibited this oficina from being saved:</h2>
+      <h2><%= pluralize(office.errors.count, "error") %> prohibited this office from being saved:</h2>
 
       <ul>
-        <% oficina.errors.each do |error| %>
+        <% office.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -17,8 +17,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :edificio_id_id %>
-    <%= form.text_field :edificio_id_id %>
+    <%= form.label :building_id %>
+    <%= form.text_field :building_id %>
   </div>
 
   <div class="actions">

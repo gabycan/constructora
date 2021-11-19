@@ -1,2 +1,0 @@
-class Edificio < ApplicationRecord
-end

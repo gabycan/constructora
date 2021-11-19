@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_19_004012) do
+ActiveRecord::Schema.define(version: 2021_11_19_012105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "buildings", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "edificios", force: :cascade do |t|
     t.string "name"
@@ -22,4 +29,22 @@ ActiveRecord::Schema.define(version: 2021_11_19_004012) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "offices", force: :cascade do |t|
+    t.integer "number"
+    t.bigint "building_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["building_id"], name: "index_offices_on_building_id"
+  end
+
+  create_table "oficinas", force: :cascade do |t|
+    t.integer "number"
+    t.bigint "edificio_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["edificio_id"], name: "index_oficinas_on_edificio_id"
+  end
+
+  add_foreign_key "offices", "buildings"
+  add_foreign_key "oficinas", "edificios"
 end
