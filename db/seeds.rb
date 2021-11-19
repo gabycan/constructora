@@ -6,7 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-25.times do
-    Product.create(name: Faker::Food.dish, description: Faker::Food.description, price: rand(10000..40000), category: @categories.sample)
+@buildings = 
+3.times do
+    Building.create(name: Faker::Company.company, address: Faker::Address.address)
 end
-puts "💾 Products loaded!"
+puts "💾 Buildings loaded!"
+
+48.times do
+    Office.create(number: Faker::Address.buildingNumber, building: @buildings.sample)
+end
+puts "💾 Offices loaded!"
